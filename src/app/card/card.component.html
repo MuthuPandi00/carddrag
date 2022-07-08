@@ -1,0 +1,16 @@
+<div cdkDropListGroup style="display:inline-flex">
+  <div class="example-container">
+    <div cdkDropList [cdkDropListData]="cardArray1" cdkDropListOrientation="horizontal" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <img *ngFor='let card of cardArray1' class="example-box" cdkDragBoundary=".mat-typography" cdkDrag [src]="'assets/images/cards/sprite3/digitalcard_'+card+'.png'"
+        alt="">
+    </div>
+  </div>
+  <div class="example-container">
+    <div cdkDropList [cdkDropListData]="cardArray2" cdkDropListOrientation="horizontal" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <img *ngFor='let card of cardArray2' class="example-box" cdkDrag [src]="'assets/images/cards/sprite3/digitalcard_'+card+'.png'"
+        alt="">
+    </div>
+  </div>
+</div>

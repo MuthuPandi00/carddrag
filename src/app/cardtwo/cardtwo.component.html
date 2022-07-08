@@ -1,0 +1,47 @@
+<div>
+  <div>
+    <img [@flipState]="flip" style="position:absolute;top:30px;left:150px;width:80px;height:100px" [src]="'assets/images/cards/sprite1/card_'+jokerCard+'.png'" alt="">
+    <img style="position:absolute;top:20px;left:202px;width:80px;height:100px;box-shadow: -1px 0 5px #795548" [src]="'assets/images/cards/sprite1/card_53.png'" alt="">
+    <img style="position:absolute;top:20px;left:208px;width:80px;height:100px;box-shadow: -1px 0 5px #795548" [src]="'assets/images/cards/sprite1/card_53.png'" alt="">
+    <img style="position:absolute;top:20px;left:214px;width:80px;height:100px;box-shadow: -1px 0 5px #795548" [src]="'assets/images/cards/sprite1/card_53.png'" alt="">
+    <img style="position:absolute;top:20px;left:221px;width:80px;height:100px;box-shadow: -1px 0 5px #795548" [src]="'assets/images/cards/sprite1/card_53.png'" alt="">
+  </div>
+  <div style="position:absolute;opacity: 0" [id]="'openCardTem'">
+
+    <img  style="width:80px;height:100px" [src]="'assets/images/cards/sprite1/card_'+temp_open_card+'.png'" alt="">
+  </div>
+  <div style="position:absolute;top:20px;left:500px">
+
+    <img  style="width:80px;height:100px" [src]="'assets/images/cards/sprite1/card_'+open_cards+'.png'" alt="">
+  </div>
+  <div #darg cdkDropListGroup class="playercard">
+
+    <div class="example-container">
+      <div cdkDropList [cdkDropListData]="cards" cdkDropListOrientation="horizontal" class="example-list"
+        (cdkDropListDropped)="drop($event,'playercard',i)" *ngFor='let cards of cardArray1;let i=index'>
+        <div #card [id]="'card_id_'+i+j+card" *ngFor='let card of cards;let j=index' (click)='selectedCard(card,i,j);'
+          class="example-box" cdkDragBoundary=".playercard" cdkDrag>
+          <img  style="width:80px;height:100px;position:relative" [src]="'assets/images/cards/sprite1/card_'+card+'.png'" alt="">
+          <span style="width:76px;height:97px;position: absolute;border-radius: 7px " [id]="'card_id_0'+i+j+card"></span>
+        </div>
+        <!-- [ngStyle]="{'top':carda==card?'-10px':'0px'}" -->
+      </div>
+    </div>
+    <div class="example-container" style="width:200px;height:200px;top:0;background-color:aqua;">
+      <div cdkDropList [cdkDropListData]="cardArray2" cdkDropListOrientation="horizontal" class="example-list"
+        (cdkDropListDropped)="drop($event,'createGroup',i)" *ngFor='let cards of cardArray2;let i=index'>
+        <div class="example-box" cdkDragBoundary=".playercard" cdkDrag>
+          <!-- <img #card  style="width:80px;height:100px;position:relative" [src]="'assets/images/cards/sprite1/card_'+cards+'.png'" alt=""> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div style="position: absolute;top: 415px;left:200px;">
+    <button #Discard mat-raised-button color="primary" (click)='disCard();'>Discard</button>
+  </div>
+  <div style="position: absolute;top: 415px;left:400px;">
+    <button #Discard mat-raised-button color="primary" (click)='joker();'>joker open</button>
+  </div>
+
+</div>
